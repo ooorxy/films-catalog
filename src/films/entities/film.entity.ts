@@ -1,7 +1,8 @@
-import { Column } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
+@Entity('films')
 export class Film {
-  @Column()
+  @PrimaryColumn()
   id: number;
 
   @Column()
