@@ -9,7 +9,8 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: films_catalog
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./create-db.sql:/docker-entrypoint-initdb.d/create-database.sql
 
   redis:
     image: redis

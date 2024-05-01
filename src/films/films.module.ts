@@ -3,9 +3,10 @@ import { FilmsService } from './films.service';
 import { FilmsController } from './films.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Film } from './entities/film.entity';
+import { CacheModule } from '../cache/cache.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Film])],
+  imports: [CacheModule, TypeOrmModule.forFeature([Film])],
   controllers: [FilmsController],
   providers: [FilmsService],
 })
