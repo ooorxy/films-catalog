@@ -6,24 +6,27 @@ import { FilmsModule } from './films/films.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-console.log({
+const configDb = {
   type: process.env.DB_DIALECT as 'postgres',
   host: process.env.DB_HOST as string,
   port: parseInt(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true,
-});
+  logging: true,
+  migrations: [__dirname + `/database/migrations/*{.ts,.js}`],
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+};
+
 @Module({
   imports: [
-    // UsersModule,
-    // FilmsModule,
+    UsersModule,
+    FilmsModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),
-    // TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(configDb),
   ],
   controllers: [AppController],
   providers: [AppService],

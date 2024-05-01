@@ -10,4 +10,7 @@ export class Film {
 
   @Column()
   synopsis: string;
+
+  @Int()
+  user_id: number;
 }
