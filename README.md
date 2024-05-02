@@ -32,7 +32,7 @@ Projeto back-end para Crud de Usuários e Filmes e autenticação JWT.
 ```bash
 # Desenvolvimento
 # Necessário
-Antes de fazer a configuração e iniciação do projeto, crie um novo arquivo
+Antes de fazer a configuração e inicialização do projeto, crie um novo arquivo
 com base na .env.example chamada .env com as devidas variaveis de ambiente.
 
 # Opcional
