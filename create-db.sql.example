@@ -1,9 +1,0 @@
--- Create new file in /database/create-db.sql
-
-CREATE DATABASE db_name
-    WITH
-        OWNER = db_username
-        ENCODING = 'UTF8'
-        CONNECTION LIMIT = -1;
-
-\c db_name;

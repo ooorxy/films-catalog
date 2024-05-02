@@ -1,12 +1,17 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { JoinColumn, OneToOne } from "typeorm";
-import { User } from "../../users/entities/user.entity";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateFilmDto {
+  @ApiProperty({
+    description: 'Title of Film',
+  })
   @IsString()
   @IsNotEmpty()
   title: string;
 
+  @ApiProperty({
+    description: 'Synopsis of Film',
+  })
   @IsString()
   @IsNotEmpty()
   synopsis: string;
