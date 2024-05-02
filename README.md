@@ -15,6 +15,19 @@ Projeto back-end para Crud de Usuários e Filmes e autenticação JWT.
 <li>BCrypt</li>
 </ul>
 
+<p>Tempo de experiência:</p>
+<ul>
+<li><b>TS:</b> desde 2023</li>
+<li><b>NestJS:</b> Aprendi conceitos basicos de utilização nesse projeto</li>
+<li><b>TypeORM:</b> Aprendi conceitos basicos de utilização nesse projeto</li>
+<li><b>Docker:</b> desde 2024</li>
+<li><b>Postgres:</b> desde 2021</li>
+<li><b>Redis:</b> Aprendi conceitos basicos de utilização nesse projeto</li>
+<li><b>Swagger:</b> desde 2023</li>
+<li><b>JWT:</b> desde 2021</li>
+<li><b>Bcrypt:</b> desde 2021</li>
+</ul>
+
 ## Configuração
 ```bash
 # Desenvolvimento
