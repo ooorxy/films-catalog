@@ -13,6 +13,7 @@ import { CreateFilmDto } from './dto/create-film.dto';
 import { UpdateFilmDto } from './dto/update-film.dto';
 import { AuthGuard } from '../auth/auth.guard';
 import { ApiBearerAuth, ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthDto } from '../auth/dto/auth.dto';
 
 @ApiTags('Films')
 @ApiBearerAuth()
@@ -20,6 +21,11 @@ import { ApiBearerAuth, ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 export class FilmsController {
   constructor(private readonly filmsService: FilmsService) {}
 
+  @ApiResponse({
+    status: 200,
+    description: 'Return a new film created.',
+    schema: { example: { film: {} } },
+  })
   @ApiResponse({
     status: 400,
     description: 'Bad request.',
@@ -38,6 +44,11 @@ export class FilmsController {
   }
 
   @ApiResponse({
+    status: 200,
+    description: 'Returns a film catalog.',
+    schema: { example: { film: [{}, {}] } },
+  })
+  @ApiResponse({
     status: 400,
     description: 'Bad request.',
     schema: { example: { message: ['Request field validation'] } },
@@ -47,7 +58,7 @@ export class FilmsController {
     description: 'Unauthorized.',
     schema: { example: { message: 'Invalid credentials.' } },
   })
-  @ApiBody({ description: 'Return a film catalog.' })
+  @ApiBody({ description: 'Returns a film catalog.' })
   @UseGuards(AuthGuard)
   @Get()
   findAll() {
@@ -55,6 +66,11 @@ export class FilmsController {
   }
 
   @ApiResponse({
+    status: 200,
+    description: 'Return a film.',
+    schema: { example: { film: {} } },
+  })
+  @ApiResponse({
     status: 400,
     description: 'Bad request.',
     schema: { example: { message: ['Request field validation'] } },
@@ -64,6 +80,7 @@ export class FilmsController {
     description: 'Unauthorized.',
     schema: { example: { message: 'Invalid credentials.' } },
   })
+  @ApiBody({ description: 'Return film.' })
   @UseGuards(AuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
@@ -71,6 +88,11 @@ export class FilmsController {
   }
 
   @ApiResponse({
+    status: 200,
+    description: 'Update film.',
+    schema: { example: { film: {} } },
+  })
+  @ApiResponse({
     status: 400,
     description: 'Bad request.',
     schema: { example: { message: ['Request field validation'] } },
@@ -80,6 +102,7 @@ export class FilmsController {
     description: 'Unauthorized.',
     schema: { example: { message: 'Invalid credentials.' } },
   })
+  @ApiBody({ type: UpdateFilmDto, description: 'Update film.' })
   @UseGuards(AuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFilmDto: UpdateFilmDto) {
@@ -87,6 +110,11 @@ export class FilmsController {
   }
 
   @ApiResponse({
+    status: 200,
+    description: 'Delete film.',
+    schema: { example: { status: true } },
+  })
+  @ApiResponse({
     status: 400,
     description: 'Bad request.',
     schema: { example: { message: ['Request field validation'] } },
@@ -96,6 +124,7 @@ export class FilmsController {
     description: 'Unauthorized.',
     schema: { example: { message: 'Invalid credentials.' } },
   })
+  @ApiBody({ description: 'Delete film.' })
   @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
